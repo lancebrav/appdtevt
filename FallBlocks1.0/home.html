@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="icon" href="assets/champion_logo.png">
+</head>
+<body style="background-color: #0a233a;">
+
+    <!-- BG MUSIC-->
+   
+    <div class="main-body">   
+
+        <img src="assets/bg.png" alt="" class="top-pic"> 
+        <img id="center-logo" src="assets/champion.png" alt="" class="center-logo">
+    </div>
+
+    <a href="game-mode.html"><button class="play-but" style="margin-left: -6%; margin-top: -2%;">PLAY</button></a>
+
+    <button class="down-button" onclick="scrollToAbout()">V</button>
+    
+    <header class="header">
+        <a href="home.html"><img src="assets/fallblocks_logo.png" alt="" srcset=""></a>
+        
+        <nav class="navbar">
+            <a href="#" id="homeLink">HOME</a>
+            <a href="#" id="aboutLink">ABOUT</a>
+            <div class="nav-item">
+                <a href="game-mode.html" class="play">PLAY</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="second-body">   
+        <img src="assets/About.png" alt="" class="about-icon">
+        <div  class="upper-content">
+            <center><h2>About</h2></center>
+            <br>
+        </div>
+        <div class="lower-content">
+            <center>
+                <br>
+                <p>Falling Block Everywhere <br> 
+                    exhilarating challenge with our Tetris game! Immerse yourself in <br>
+                    the iconic world of falling Tetriminos, where quick thinking and <br>
+                    precision are your greatest allies.</p>
+                    <br>
+                <p>Challenge yourself to reach new heights, compete against <br>
+                    friends and rivals, and become the ultimate Tetris champion. Are <br>
+                    you ready to embrace the challenge and shape your destiny, one <br>
+                     block at a time?</p>
+            </center>
+        </div>
+    </div>
+</body>
+<script>
+
+let isSpinning = false;
+
+document.addEventListener("DOMContentLoaded", function() {
+    const centerLogo = document.getElementById("center-logo");
+    centerLogo.addEventListener("click", function() {
+        if (!isSpinning) {
+            centerLogo.style.animation = "rotate 1s linear infinite"; // Apply the rotation animation
+            isSpinning = true;
+        } else {
+            centerLogo.style.animation = "drop 1s linear"; // Apply the drop animation
+            isSpinning = false;
+        }
+    });
+});
+    function scrollToPosition(position) {
+        window.scrollTo({
+            top: position,
+            behavior: 'smooth'
+        });
+    }
+
+    function scrollToAbout() {
+        window.scrollTo({
+            top: 850,
+            behavior: 'smooth'
+        });
+
+        var downButton = document.querySelector('.down-button');
+        downButton.removeEventListener('click', scrollToAbout);
+        
+        downButton.addEventListener('click', scrollToAnotherPosition);
+    }
+
+    function scrollToAnotherPosition() {
+        window.scrollTo({
+            top: 1850,
+            behavior: 'smooth'
+        });
+        
+        var downButton = document.querySelector('.down-button');
+        downButton.removeEventListener('click', scrollToAnotherPosition);
+    }
+
+    document.getElementById('homeLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        scrollToPosition(0); 
+    });
+    
+    document.getElementById('aboutLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        scrollToPosition(850); 
+    });
+
+   
+
+
+    
+</script>
+</html>

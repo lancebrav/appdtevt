@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Mode</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="game-layout.css">
+    <link rel="icon" href="assets/champion_logo.png">
+</head>
+<body style="opacity: 0; transition: opacity 0.3s ease-in;background-color: rgb(32, 187, 187);">
+
+    <header class="header">
+        <a href="home.html"><img src="assets/fallblocks_logo.png" alt="" srcset=""></a>
+        
+        <nav class="navbar">
+            <a href="home.html"  onclick="return confirmHome()">HOME</a>
+            <a href="home.html"  onclick="return confirmAbout()">ABOUT</a>
+            <div class="nav-item">
+                <a href="game-mode.html" class="play" onclick="return confirmPlay()">PLAY</a>
+            </div>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="game-container">
+            <canvas id="tetris" width="320" height="640"></canvas>
+            <div class="timer">
+                <p>Time: <span id="timer">0</span> sec</p>
+
+                <h1 id="scoreboard">0</h1>
+            </div>
+        </div>
+    </div>
+
+            <div class="tetrimino tetrimino1" style="left: 10%; top: -10%;"></div>
+        <div class="tetrimino tetrimino2" style="left: 25%; top: -10%;"></div>
+
+        <div class="tetrimino tetrimino7" style="left: 100%; top: -10%;"></div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen" class="game-over-screen">
+        <div class="game-over-content">
+            <h1>GAME OVER</h1>
+            <h2 id="gameOverScoreboard"></h2>
+            <a href="game-mode.html"><button>Exit</button></a>
+            <button onclick="retryGame()">Retry</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
+    <script src="tetris initialization scripts/tetrominoes.js"></script>
+    <script src="tetris initialization scripts/tetris.js"></script>
+
+    <script>
+        window.onload = function() {
+            document.body.style.opacity = 1;
+        };
+
+
+        function confirmPlay() {
+            return confirm("Are you sure you want to enter Game Mode?");
+    // If user clicks "OK", link proceeds
+    // If user clicks "Cancel", link is blocked
+        };   
+
+        function confirmHome() {
+            return confirm("Are you sure you want to go back to home?");
+        }
+
+        function confirmAbout() {
+            return confirm("Go to about?");
+        }
+
+
+
+    </script>
+    
+
+
+    
+</body>
+</html>
+
+<style>
+body {
+    background-color: #c7dcf0;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#tetris {
+    border: 5px solid gray;
+}
+
+.game-container .timer {
+    margin-top: 5% ;
+    align-self: flex-start;
+    color: white;
+    font-size: 37px;
+}
+
+.game-over-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.game-over-content {
+    text-align: center;
+    color: white;
+}
+
+.game-over-content h1 {
+    font-size: 48px;
+}
+
+.game-over-content button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+</style>
